@@ -1,4 +1,4 @@
-#Readme
+# Readme
 
 This repository contains the material needed to prepare for the exam of Software Security at Radboud University (and much more).
 
@@ -6,7 +6,7 @@ This repository contains the material needed to prepare for the exam of Software
 
 The goal is to keep this repo updated through the years, **also with the help of the students**.
 
-#How to contribute (and please, do it!)
+# How to contribute (and please, do it!)
 
 You can contribute of course by fixing typos and by clarifying notions. 
 However, the main contribution would be sharing with the community your experience and your sleepless nights letting the fuzzers work. 
@@ -17,7 +17,7 @@ So, you could:
 3) **By sending your ideas to improve the project**: do you have ideas, hints, or something you think could help your colleagues (and the community)? Shout them out!
 So, dear student, feel free to push the edits or drop me an e-mail at cristian.daniele@ru.nl.
 
-#Repository overview
+# Repository overview
 ## Let's keep this structure
 ```mermaid
 flowchart TB
