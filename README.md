@@ -1,8 +1,8 @@
 # Readme
 
-This repository contains the material needed to prepare for the exam of Software Security at Radboud University (and much more).
+This repository contains the material and pointers for the fuzzing assignment for the Software Security course at Radboud University.
 
-**Erik Poll** (http://www.cs.ru.nl/~erikpoll/), a teacher of Software Security and an Associate professor at Radboud University, created these contents. 
+It is created by **Erik Poll** who is teaching the course and **Cristian Daniele** and **Seyed Benham Andarzian** who are TAs.
 
 The goal is to keep this repo updated through the years, **also with the help of the students**.
 
