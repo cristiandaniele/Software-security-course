@@ -1,8 +1,8 @@
 # Readme
 
-This repository contains the material and pointers for the fuzzing assignment for the Software Security course at Radboud University.
+This repository contains the material and pointers for the fuzzing assignment for the Software Security course at Radboud University taught by **Erik Poll**.
 
-It is created by **Erik Poll** who is teaching the course and **Cristian Daniele** and **Seyed Benham Andarzian** who are TAs.
+It is created by **Cristian Daniele** **Erik Poll** who is assisting with the course together with **Seyed Benham Andarzian**.
 
 The goal is to keep this repo updated through the years, **also with the help of the students**.
 
