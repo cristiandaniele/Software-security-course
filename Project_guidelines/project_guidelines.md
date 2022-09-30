@@ -18,7 +18,6 @@ You are more than welcome to try out other fuzzers that you happen to know and a
 
 > NB: Document your experiments carefully When you run your experiments, document the set-up and input files precisely. Ideally you should be able to re-run experiment and reproduce the exact same results.
 
->NB: Warning Do not open input files created by the fuzzers with any 'production' software on a system that you care about. For instance, if you are fuzzing image files then opening the fuzzed image files on your mobile phone or with the app that you use to manage all your holiday photos could have disastrous effects.
 
 ## Fuzzers
 
