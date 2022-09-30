@@ -18,6 +18,18 @@ You are more than welcome to try out other fuzzers that you happen to know and a
 
 > NB: Document your experiments carefully When you run your experiments, document the set-up and input files precisely. Ideally you should be able to re-run experiment and reproduce the exact same results.
 
+Optional things to try, depending on the experience with your specific
+target applications, include:
+
+- investigate (and fix?) any bugs you found;
+- check bugs found against known CVEs;
+- introduce bugs and see if fuzzers can find these;
+- if you do not find bugs: test older releases;
+- try different settings of the tools, or different initial seeds;
+
+or other creatives ideas of your own!
+
+
 
 ## Fuzzers
 
