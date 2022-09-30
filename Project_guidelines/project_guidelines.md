@@ -10,10 +10,11 @@ To make things rewarding, choose some software that takes a complex input format
   Try the fuzzers below, initially without but then with sanitizers, on your chosen application. 
 
 Each group should at least try out
-1. afl, or rather the more up-to-date version afl++, as the leading tool around 
-2. one of the dumber fuzzers Radamsa or zzuf, and 
-3. HongFuzz, as another well-known smart fuzzer. As sanatiser, at least try out ASan, but you can also try MSan or valgrind.
-  You are more than welcome to try out other fuzzers that you happen to know and are curious about. This project assignment is fairly open-ended. Make sure you all spend at least one full afternoon per week on it for the next 2 months. We will discuss progress and experiences in class, so that we can still shift or focus efforts depending on the results so far, or maybe cut things short if spending time does not seem that interesting. Final reports with a summary of your experiments and reflection on the tools will be due at the end of November/early December, so that we can still discuss this at one of the last lectures in December.
+1. **afl**, or rather the more up-to-date version **afl++**, as the leading tool around;
+2. one of the dumber fuzzers **Radamsa** or **zzuf**; and 
+3. **HongFuzz**, as another well-known smart fuzzer. As sanatiser, at least try out **ASan**, but you can also try **MSan** or **valgrind**.
+
+You are more than welcome to try out other fuzzers that you happen to know and are curious about. This project assignment is fairly open-ended. Make sure you all spend at least one full afternoon per week on it for the next 2 months. We will discuss progress and experiences in class, so that we can still shift or focus efforts depending on the results so far, or maybe cut things short if spending time does not seem that interesting. Final reports with a summary of your experiments and reflection on the tools will be due at the end of November/early December, so that we can still discuss this at one of the last lectures in December.
 
 > NB: Document your experiments carefully When you run your experiments, document the set-up and input files precisely. Ideally you should be able to re-run experiment and reproduce the exact same results.
 
