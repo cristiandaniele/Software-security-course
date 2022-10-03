@@ -6,6 +6,17 @@ It is created by **Cristian Daniele** who is assisting with the course together 
 
 The goal is to keep this repo updated through the years, **also with the help of the students**.
 
+# Repository Index
+
+<pre>
+├── <a href="Project_guidelines">Project_guidelines</a>
+│   ├── <a href="Project_guidelines/azure_setup.md">azure_setup.md</a>
+│   └── <a href="Project_guidelines/project_guidelines.md">project_guidelines.md</a>
+├── <a href="Projects">Projects</a>
+├── <a href="README.md">README.md</a>
+└── <a href="Tutorials">Tutorials</a>
+</pre>
+
 # How to contribute (and please, do it!)
 
 You can contribute of course by fixing typos and by clarifying notions. 
@@ -17,8 +28,8 @@ So, you could:
 3) **By sending your ideas to improve the project**: do you have ideas, hints, or something you think could help your colleagues (and the community)? Shout them out!
 So, dear student, feel free to push the edits or drop me an e-mail at cristian.daniele@ru.nl.
 
-# Repository overview
-## Let's keep this structure
+
+# Let's keep this structure
 ```mermaid
 flowchart TB
 subgraph to keep updated!!!
@@ -28,13 +39,6 @@ subgraph to keep updated!!!
     Tutorials --collection of all the tutorials--> *folder_with_fuzzer_name*
     end
 ```
-<pre>
-├── <a href="Project_guidelines">Project_guidelines</a>
-│   ├── <a href="Project_guidelines/azure_setup.md">azure_setup.md</a>
-│   └── <a href="Project_guidelines/project_guidelines.md">project_guidelines.md</a>
-├── <a href="Projects">Projects</a>
-├── <a href="README.md">README.md</a>
-└── <a href="Tutorials">Tutorials</a>
-</pre>
+
 
     
