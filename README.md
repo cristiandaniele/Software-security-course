@@ -29,12 +29,12 @@ subgraph to keep updated!!!
     end
 ```
 <pre>
-├── <a href=file://"Project_guidelines">Project_guidelines</a>
-│   ├── <a href=file://"Project_guidelines/azure_setup.md">azure_setup.md</a>
-│   └── <a href=file://"Project_guidelines/project_guidelines.md">project_guidelines.md</a>
-├── <a href=file://"Projects">Projects</a>
-├── <a href=file://"README.md">README.md</a>
-└── <a href=file://"Tutorials">Tutorials</a>
+├── <a href="Project_guidelines">Project_guidelines</a>
+│   ├── <a href="Project_guidelines/azure_setup.md">azure_setup.md</a>
+│   └── <a href="Project_guidelines/project_guidelines.md">project_guidelines.md</a>
+├── <a href="Projects">Projects</a>
+├── <a href="README.md">README.md</a>
+└── <a href="Tutorials">Tutorials</a>
 </pre>
 
     
