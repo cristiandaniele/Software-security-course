@@ -36,7 +36,7 @@ or other creatives ideas of your own!
 ## Fuzzers
 
 More information and pointers about these fuzzers on tools page. In Brightspace there are discussion forums to exchange good and bad experiences on installing and using the tools. You can also have a look at this very gentle introduction to zuff, ASan and afl.
-- **Radamsa** [https://gitlab.com/akihe/radamsa] 
+- [Radamsa](https://gitlab.com/akihe/radamsa)
 Radamsa is a file-based mutational fuzzer written in Owl-Lisp, a dialect of LISP. It takes a set of valid example files as input and then outputs an arbitrary number of invalid files by mutating them. It does not feed these files to the target software. You can feed these files manually to the target software or set up some automation for this.
 
     *To install*:
@@ -47,7 +47,7 @@ Radamsa is a file-based mutational fuzzer written in Owl-Lisp, a dialect of LISP
     > sudo make install # optional, you can also launch radamsa by giving the full path to bin/radamsa
     > radamsa --help
     ```
-- **zzuf** [http://caca.zoy.org/wiki/zzuf] 
+- [zzuf](http://caca.zoy.org/wiki/zzuf)
 zzuf is another mutational fuzzer, very similar in style to Radamsa. Indeed, it will be interesting to see if zuff and Radamsa produce very similar results. It is pretty old and it's not clear how actively it is being maintained. But it is simple, lightweight, and deterministic, so still worth a shot to try out.
     *To install*: On Linux, you can simply get it with
 
@@ -60,7 +60,7 @@ zzuf is another mutational fuzzer, very similar in style to Radamsa. Indeed, it 
     >  sudo make install
     ```
 
-- **afl** or **afl++** [http://lcamtuf.coredump.cx/afl] 
+- [afl or afl++](http://lcamtuf.coredump.cx/afl])
 afl by Michael Zalewski is a 'smart' fuzzer that takes evolutionary approach to fuzzing: it mutates sample input files and then observes executions to see which mutations result in different code execution paths, to then prioritise these mutations over others. To observe the code execution path, the target software needs to be instrumented at compile time. (It is possible to use the tool if you do not have access to the source code by running the code in the QEMU emulator, but we're not going to use that option for this project.)
 The original afl is no longer maintained, though it should still work. There is a newer daughter project afl++ that might prove more stable.
 The QuickStartGuide.txt at http://lcamtuf.coredump.cx/afl provides a quick intro. There is a daughter project afl++ which may be easier to install and run than the original afl.
@@ -71,18 +71,19 @@ If that does not work on your Linux/Mac OS X machine, Peter Guttman's article Fu
 The instruction for afl++ are slightly differently.
 Unlike with the tools above, for afl you need to recompile your code before you can start fuzzing. This tutorial walks trough a simple example using afl. Peter Guttman's article Fuzzing Code with afl walks through the use of afl in combination with ASan. There is also an afl tutorial at fuzzing-project.org, which also discusses the use of afl with ASan. 
     > **NB Windows users**: Originally afl only ran on Linux and Mac OS X, as it uses *nix features. You can run afl in a VirtualBox VM, with a performance hit of course, but using a memory-instrumentation tool like ASan is then not an option. There is now also a Windows fork of afl. If you have any Linux or Mac OS X users in the group, obvious strategy would be to use afl on these systems and not to try this Windows fork. Or, if you could try winafl for comparison; they had to make some tweaks for winafl, not sure how these will affect results. There is also a recent - still experimental - port of ASan for Windows. By all means give it a try, if you like a challenge, but you'd probably want to ditch it if you hit any snags. Please use the Brightspace forum to report good or bad experiences, so that other groups can benefit from this.
-- **CERT BFF** [CERT Basic Fuzzing Framework] 
+- **CERT BFF** [https://github.com/CERTCC/certfuzz]
 Playing around with CERT BFF was not a succes last year, so better give it a miss. BFF started off as a fuzzing framework built around zzuf, but has since evolved to use a different mutational fuzzer under the hood. BFF has grown out of the merger of two fuzzing tools, BFF for Linux/OSX and FOE for Windows, and includes several features to help not just in finding flaws but also analysing them: it tries to automate some of the configuration of the fuzzer, can try to to reduce fuzzed examples that cause crashes to a minimal size, and collects debugging information about crashes to help in analysis. Not sure if all this complexity makes the tool easier to use for this project than a bare bones tool like zzuf or harder...
 *To install*: from the BFF download page you can get OS X and Windows installers and a UbuFuzz virtual machine. Or you can grab the source code from the github, but that is probably not for the faint-hearted.
 
 ## Instrumentation tools
 
 Below some instrumentation tools to try out. These should help to spot more errors when fuzzing. At least try out ASan, which will probably give you the best improvements for the effort and overhead. If you have trouble with ASan, you could use valgrind's Memcheck as a fallback.
-- **AddressSanitizer (ASan)** [ASan github] 
+- [AddressSanitizer (ASan)](https://github.com/google/sanitizers/wiki/AddressSanitizer)
 ASan adds memory safety checks to C(++) code, both for spatial and temporal memory flaws. ASan is part of the LLVM clang compiler starting with version 3.1 and a part of GCC starting with version 4.8.
-- **MemorySanitizer (MSan)** [MSan github] 
+- [MemorySanitizer (MSan)](https://github.com/google/sanitizers/wiki/MemorySanitizer)
 MSan adds memory safety checks to C(++) code to detect reading of uninitialised memory. MSan is available as a compile-time option in clang since version 4.0.
-- **valgrind** [http://valgrind.org] Valgrind is the classic instrumentation framework for building tools that do dynamic analysis. It provides several detectors to find different classes of bugs. Valgrind's Memcheck detector for memory errors would be interesting to try for these fuzzing experiments. (Valgrind provides many more detectors and tools, for instance detectors to spot thread errors, tools to profile heap usage, and many more.)
+- [Valgrind](http://valgrind.org) 
+  Valgrind is the classic instrumentation framework for building tools that do dynamic analysis. It provides several detectors to find different classes of bugs. Valgrind's Memcheck detector for memory errors would be interesting to try for these fuzzing experiments. (Valgrind provides many more detectors and tools, for instance detectors to spot thread errors, tools to profile heap usage, and many more.)
 
 ### Valgrind vs ASan/MSan
 
