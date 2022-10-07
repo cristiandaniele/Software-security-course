@@ -60,7 +60,7 @@ zzuf is another mutational fuzzer, very similar in style to Radamsa. Indeed, it 
     >  sudo make install
     ```
 
-- [afl or afl++](http://lcamtuf.coredump.cx/afl])
+- [afl](http://lcamtuf.coredump.cx/afl]) or [afl ++](https://github.com/AFLplusplus/AFLplusplus)
 afl by Michael Zalewski is a 'smart' fuzzer that takes evolutionary approach to fuzzing: it mutates sample input files and then observes executions to see which mutations result in different code execution paths, to then prioritise these mutations over others. To observe the code execution path, the target software needs to be instrumented at compile time. (It is possible to use the tool if you do not have access to the source code by running the code in the QEMU emulator, but we're not going to use that option for this project.)
 The original afl is no longer maintained, though it should still work. There is a newer daughter project afl++ that might prove more stable.
 The QuickStartGuide.txt at http://lcamtuf.coredump.cx/afl provides a quick intro. There is a daughter project afl++ which may be easier to install and run than the original afl.
@@ -74,6 +74,18 @@ Unlike with the tools above, for afl you need to recompile your code before you 
 - [CERT BFF](https://github.com/CERTCC/certfuzz)
 Playing around with CERT BFF was not a succes last year, so better give it a miss. BFF started off as a fuzzing framework built around zzuf, but has since evolved to use a different mutational fuzzer under the hood. BFF has grown out of the merger of two fuzzing tools, BFF for Linux/OSX and FOE for Windows, and includes several features to help not just in finding flaws but also analysing them: it tries to automate some of the configuration of the fuzzer, can try to to reduce fuzzed examples that cause crashes to a minimal size, and collects debugging information about crashes to help in analysis. Not sure if all this complexity makes the tool easier to use for this project than a bare bones tool like zzuf or harder...
 *To install*: from the BFF download page you can get OS X and Windows installers and a UbuFuzz virtual machine. Or you can grab the source code from the github, but that is probably not for the faint-hearted.
+
+- [HongFuzz](https://github.com/google/honggfuzz)
+A security oriented, feedback-driven, evolutionary, easy-to-use fuzzer with interesting analysis options. See USAGE for the description of command-line options.
+  - It's multi-process and multi-threaded: no need to run multiple copies of your fuzzer, as honggfuzz can unlock potential of all your available CPU cores with a single supervising process. The file corpus is automatically shared and improved between the fuzzing threads and fuzzed processes.
+  - It's blazingly fast when in the persistent fuzzing mode). A simple/empty LLVMFuzzerTestOneInput function can be tested with up to 1mo iterations per second on a relatively modern CPU (e.g. i7-6700K)
+  - Has a solid track record of uncovered security bugs: the only (to the date) vulnerability in OpenSSL with the critical score mark was discovered by honggfuzz. See the Trophies paragraph for the summary of findings to the date
+  - Uses low-level interfaces to monitor processes (e.g. ptrace under Linux and NetBSD). As opposed to other fuzzers, it will discover and report hijacked/ignored signals from crashes (intercepted and potentially hidden by a fuzzed program)
+  - Easy-to-use, feed it a simple corpus directory (can even be empty) and it will work its way up expanding it utilizing feedback-based coverage metrics
+  - Supports several (more than any other coverage-based feedback-driven fuzzer) hardware-based (CPU: branch/instruction counting, Intel BTS, Intel PT) and software-based feedback-driven fuzzing methods known from other fuzzers (libfuzzer, afl)
+  - Works (at least) under GNU/Linux, FreeBSD, NetBSD, Mac OS X, Windows/CygWin and Android
+  - Supports the persistent fuzzing mode (long-lived process calling a fuzzed API repeatedly) with libhfuzz/libhfuzz.a. More on that can be found here
+  - It comes with the examples directory, consisting of real world fuzz setups for widely-used software (e.g. Apache and OpenSSL)
 
 ## Instrumentation tools
 
