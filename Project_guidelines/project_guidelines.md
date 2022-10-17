@@ -71,7 +71,7 @@ zzuf is another mutational fuzzer, very similar in style to Radamsa. Indeed, it 
 - [afl](https://github.com/google/AFL) or [afl ++](https://github.com/AFLplusplus/AFLplusplus)
 afl by Michael Zalewski is a 'smart' fuzzer that takes evolutionary approach to fuzzing: it mutates sample input files and then observes executions to see which mutations result in different code execution paths, to then prioritise these mutations over others. To observe the code execution path, the target software needs to be instrumented at compile time. (It is possible to use the tool if you do not have access to the source code by running the code in the QEMU emulator, but we're not going to use that option for this project.)
 The original afl is no longer maintained, though it should still work. There is a newer daughter project afl++ that might prove more stable.
-The [QuickStartGuide.txt](http://lcamtuf.coredump.cx/afl) provides a quick intro. There is a daughter project afl++ which may be easier to install and run than the original afl.
+The [QuickStartGuide.txt](https://lcamtuf.coredump.cx/afl/QuickStartGuide.txt) provides a quick intro. There is a daughter project afl++ which may be easier to install and run than the original afl.
 *To install*: The easiest way to install afl is with
 
   ```sudo apt-get install afl```
