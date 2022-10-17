@@ -84,7 +84,7 @@ Playing around with CERT BFF was not a success last year, so better give it a mi
 *To install*: from the BFF download page you can get OS X and Windows installers and a UbuFuzz virtual machine. Or you can grab the source code from the github, but that is probably not for the faint-hearted.
 
 - [HonggFuzz](https://github.com/google/honggfuzz)
-HonggFuzz is another modern fuzzer. It has been reported to outperfr afl(++): it will be interesting to see if it will for the targets you are looking at.
+HonggFuzz is another modern fuzzer. It has been reported to outperform afl(++) in many cases: it will be interesting to see if it will also be the case for the target you are looking at.
 
 ## Instrumentation tools
 
@@ -137,15 +137,15 @@ E.g. it may be interesting to also provide "crashes found/million
 test cases" or "crashes found/hr" to compare results between
 fuzzing campaigns.
 
+| Number       | Tool           | Time    | No of test cases | issues found      |
+| ------------ | -------------- | ------- | ---------------- |------------------ | 
+| Experiment 1 | afl with ASan  | 2.5 hrs |  2.5 million     | 2 crashes, 1 hang |
+| Experiment 2 | zzuf with ASan | 1.5 hrs |  134 k           | nothing           |
+
 You MUST clearly name or number your experiments, so it is easy to see
 the link with the text and the tables. This is useful to do in text
 anyway, as it allows clear cross-references in the discussion of your
 findings.
-
-| Number       | Tool used         | Time    | No of test cases | issues found      |
-| ------------ | ----------------- | ------- | ---------------- |------------------ | 
-| Experiment 1 | afl with ASan     | 2.5 hrs |  2.5 million     | 2 crashes, 1 hang |
-| Experiment 2 | zzuf without ASan | 1.5 hrs |  134 k           | nothing           |
 
 For any flaws found, possible issues to discuss would be:
 
