@@ -1,7 +1,9 @@
 # Fuzzing group project
 
 ## Intro
+
 Goal of this project is to become familiar with fuzzing in combination with memory sanatisers as way to do security testing. Trying out different fuzzers, with and without sanatisers, should also provide some comparison of the pros and cons and effectiveness of various approaches.
+
 - **Step 1: Choose a target**
   For the assignment can target any software you want as the System-Under-Test (SUT). Only constraint is that it should be C(++), open source, and take some input in a complicated data or file format.  You can choose some old outdated software, where it should be easier to find bugs, or some newer up-to-date software, where finding bugs may be harder but also more interesting. To keep things simple, choose some software that can take a single file as input on the command line.
 To make things rewarding, choose some software that takes a complex input format as input: the more complex the input format, the more likely that there are bugs in input handling and the more likely that fuzzing will detect them. One obvious choice here is software that handles graphical data.
@@ -10,8 +12,11 @@ To make things rewarding, choose some software that takes a complex input format
   Try the fuzzers below, initially without but then with sanitizers, on your chosen application. 
 
 Each group should at least try out
+
 1. **afl**, or rather the more up-to-date version **afl++**, as the leading tool around;
+
 2. one of the dumber fuzzers **Radamsa** or **zzuf**; and 
+
 3. **HongFuzz**, as another well-known smart fuzzer.
 
 As sanatiser, at least try out **ASan**, but you can also try **MSan** or **valgrind**.
@@ -31,15 +36,15 @@ target applications, include:
 
 or other creatives ideas of your own!
 
-
-
 ## Fuzzers
 
 More information and pointers about these fuzzers on tools page. In Brightspace there are discussion forums to exchange good and bad experiences on installing and using the tools. You can also have a look at this very gentle introduction to zuff, ASan and afl.
+
 - [Radamsa](https://gitlab.com/akihe/radamsa)
 Radamsa is a file-based mutational fuzzer written in Owl-Lisp, a dialect of LISP. It takes a set of valid example files as input and then outputs an arbitrary number of invalid files by mutating them. It does not feed these files to the target software. You can feed these files manually to the target software or set up some automation for this.
 
     *To install*:
+
     ```
     > git clone https://gitlab.com/akihe/radamsa
     > cd radamsa
@@ -47,12 +52,15 @@ Radamsa is a file-based mutational fuzzer written in Owl-Lisp, a dialect of LISP
     > sudo make install # optional, you can also launch radamsa by giving the full path to bin/radamsa
     > radamsa --help
     ```
+
 - [zzuf](http://caca.zoy.org/wiki/zzuf)
 zzuf is another mutational fuzzer, very similar in style to Radamsa. Indeed, it will be interesting to see if zuff and Radamsa produce very similar results. It is pretty old and it's not clear how actively it is being maintained. But it is simple, lightweight, and deterministic, so still worth a shot to try out.
     *To install*: On Linux, you can simply get it with
 
     ```sudo apt-get install zzuf```
+
     Alternatively, unpack the tar-ball from the git repo and run the standard sequence
+
     ```
     > ./bootstrap 
     >  ./configure 
@@ -90,10 +98,13 @@ A security oriented, feedback-driven, evolutionary, easy-to-use fuzzer with inte
 ## Instrumentation tools
 
 Below some instrumentation tools to try out. These should help to spot more errors when fuzzing. At least try out ASan, which will probably give you the best improvements for the effort and overhead. If you have trouble with ASan, you could use valgrind's Memcheck as a fallback.
+
 - [AddressSanitizer (ASan)](https://github.com/google/sanitizers/wiki/AddressSanitizer)
 ASan adds memory safety checks to C(++) code, both for spatial and temporal memory flaws. ASan is part of the LLVM clang compiler starting with version 3.1 and a part of GCC starting with version 4.8.
+
 - [MemorySanitizer (MSan)](https://github.com/google/sanitizers/wiki/MemorySanitizer)
 MSan adds memory safety checks to C(++) code to detect reading of uninitialised memory. MSan is available as a compile-time option in clang since version 4.0.
+
 - [Valgrind](http://valgrind.org) 
   Valgrind is the classic instrumentation framework for building tools that do dynamic analysis. It provides several detectors to find different classes of bugs. Valgrind's Memcheck detector for memory errors would be interesting to try for these fuzzing experiments. (Valgrind provides many more detectors and tools, for instance detectors to spot thread errors, tools to profile heap usage, and many more.)
 
@@ -112,14 +123,13 @@ afl comes with two helper programs that may be interesting to play with:
 
 Note that afl-cmin and afl-tmin try very different forms of minimisation: afl-cmin tries to minimise a set of inputs and afl-tmin tries to minimise a single input.
 
-
-# Report
+## Report
 
 You final report should:
 - summarise the outcomes of your fuzzing experiments
-- reflect on these outcomeas and the tools
+- reflect on these outcomes and the tools
 
-## Outcomes of the fuzzing experiments
+### Outcomes of the fuzzing experiments
 
 For your fuzzing experiments, describe for each tool or each tool combination of fuzzer and sanitiser:
 
@@ -128,7 +138,23 @@ For your fuzzing experiments, describe for each tool or each tool combination of
 - how much time this took;
 - how many -- if any -- flaws were found.
 
-You could present this in one big table or several smaller tables.
+You MUST include some tables to provide an overview of your results
+with different tools/sanitiser combinations.  These could look like
+the one below, but feel free to add columns and info depending on what
+is revelant and interesting for your case study or some specific.
+E.g. it may be interesting to also provide "crashes found/million
+test cases" or "crashes found/hr" to compare results between
+fuzzing campaigns.
+
+You MUST clearly name or number your experiments, so it is easy to see
+the link with the text and the tables. This is useful to do in text
+anyway, as it allows clear cross-references in the discussion of your
+findings.
+
+| Number       | Tool used         | Time    | No of test cases | issues found      |
+| ------------ | ----------------- | ------- | ---------------- |------------------ | 
+| Experiment 1 | afl with ASan     | 2.5 hrs |  2.5 million     | 2 crashes, 1 hang |
+| Experiment 2 | zzuf without ASan | 1.5 hrs |  134 k           | nothing           |
 
 For any flaws found, possible issues to discuss would be:
 
@@ -137,7 +163,7 @@ For any flaws found, possible issues to discuss would be:
 - if any of the flaws are known CVEs, or other known bugs not reported as CVE but say reported on the application's website, github repo, or in release notes. Figuring out if some crash responds to some CVE might be really tricky to figure out, so don't feel obliged to dig into this for too long!
 - if not, if they should be reported as new bugs.
 
-# Reflection
+### Reflection
 
 Some research questions to reflect on are given below. (You do NOT have to stick to following these precise questions, feel free to reflect on other interesting issues that came up, or questions that were unresolved.)
 
