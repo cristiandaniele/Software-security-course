@@ -17,7 +17,7 @@ Each group should at least try out
 
 2. one of the dumber fuzzers **Radamsa** or **zzuf**; and 
 
-3. **HongFuzz**, as another well-known smart fuzzer.
+3. **HonggFuzz**, as another well-known smart fuzzer.
 
 As sanatiser, at least try out **ASan**, but you can also try **MSan** or **valgrind**.
 
@@ -38,7 +38,7 @@ or other creatives ideas of your own!
 
 ## Fuzzers
 
-More information and pointers about these fuzzers on tools page. In Brightspace there are discussion forums to exchange good and bad experiences on installing and using the tools. You can also have a look at this very gentle introduction to zuff, ASan and afl.
+More information and pointers about these fuzzers on tools page. In Brightspace there are discussion forums to exchange good and bad experiences on installing and using the tools. You can also have a look at [this very gentle introduction to zuff, ASan and afl](https://fuzzing-project.org/tutorials.html).
 
 - [Radamsa](https://gitlab.com/akihe/radamsa)
 Radamsa is a file-based mutational fuzzer written in Owl-Lisp, a dialect of LISP. It takes a set of valid example files as input and then outputs an arbitrary number of invalid files by mutating them. It does not feed these files to the target software. You can feed these files manually to the target software or set up some automation for this.
@@ -71,7 +71,7 @@ zzuf is another mutational fuzzer, very similar in style to Radamsa. Indeed, it 
 - [afl](https://github.com/google/AFL) or [afl ++](https://github.com/AFLplusplus/AFLplusplus)
 afl by Michael Zalewski is a 'smart' fuzzer that takes evolutionary approach to fuzzing: it mutates sample input files and then observes executions to see which mutations result in different code execution paths, to then prioritise these mutations over others. To observe the code execution path, the target software needs to be instrumented at compile time. (It is possible to use the tool if you do not have access to the source code by running the code in the QEMU emulator, but we're not going to use that option for this project.)
 The original afl is no longer maintained, though it should still work. There is a newer daughter project afl++ that might prove more stable.
-The QuickStartGuide.txt at http://lcamtuf.coredump.cx/afl provides a quick intro. There is a daughter project afl++ which may be easier to install and run than the original afl.
+The [QuickStartGuide.txt](http://lcamtuf.coredump.cx/afl) provides a quick intro. There is a daughter project afl++ which may be easier to install and run than the original afl.
 *To install*: The easiest way to install afl is with
 
   ```sudo apt-get install afl```
@@ -80,20 +80,11 @@ The instruction for afl++ are slightly differently.
 Unlike with the tools above, for afl you need to recompile your code before you can start fuzzing. This tutorial walks trough a simple example using afl. Peter Guttman's article Fuzzing Code with afl walks through the use of afl in combination with ASan. There is also an afl tutorial at fuzzing-project.org, which also discusses the use of afl with ASan. 
     > **NB Windows users**: Originally afl only ran on Linux and Mac OS X, as it uses *nix features. You can run afl in a VirtualBox VM, with a performance hit of course, but using a memory-instrumentation tool like ASan is then not an option. There is now also a Windows fork of afl. If you have any Linux or Mac OS X users in the group, obvious strategy would be to use afl on these systems and not to try this Windows fork. Or, if you could try winafl for comparison; they had to make some tweaks for winafl, not sure how these will affect results. There is also a recent - still experimental - port of ASan for Windows. By all means give it a try, if you like a challenge, but you'd probably want to ditch it if you hit any snags. Please use the Brightspace forum to report good or bad experiences, so that other groups can benefit from this.
 - [CERT BFF](https://github.com/CERTCC/certfuzz)
-Playing around with CERT BFF was not a succes last year, so better give it a miss. BFF started off as a fuzzing framework built around zzuf, but has since evolved to use a different mutational fuzzer under the hood. BFF has grown out of the merger of two fuzzing tools, BFF for Linux/OSX and FOE for Windows, and includes several features to help not just in finding flaws but also analysing them: it tries to automate some of the configuration of the fuzzer, can try to to reduce fuzzed examples that cause crashes to a minimal size, and collects debugging information about crashes to help in analysis. Not sure if all this complexity makes the tool easier to use for this project than a bare bones tool like zzuf or harder...
+Playing around with CERT BFF was not a success last year, so better give it a miss. BFF started off as a fuzzing framework built around zzuf, but has since evolved to use a different mutational fuzzer under the hood. BFF has grown out of the merger of two fuzzing tools, BFF for Linux/OSX and FOE for Windows, and includes several features to help not just in finding flaws but also analysing them: it tries to automate some of the configuration of the fuzzer, can try to to reduce fuzzed examples that cause crashes to a minimal size, and collects debugging information about crashes to help in analysis. Not sure if all this complexity makes the tool easier to use for this project than a bare bones tool like zzuf or harder...
 *To install*: from the BFF download page you can get OS X and Windows installers and a UbuFuzz virtual machine. Or you can grab the source code from the github, but that is probably not for the faint-hearted.
 
-- [HongFuzz](https://github.com/google/honggfuzz)
-A security oriented, feedback-driven, evolutionary, easy-to-use fuzzer with interesting analysis options. See USAGE for the description of command-line options.
-  - It's multi-process and multi-threaded: no need to run multiple copies of your fuzzer, as honggfuzz can unlock potential of all your available CPU cores with a single supervising process. The file corpus is automatically shared and improved between the fuzzing threads and fuzzed processes.
-  - It's blazingly fast when in the persistent fuzzing mode). A simple/empty LLVMFuzzerTestOneInput function can be tested with up to 1mo iterations per second on a relatively modern CPU (e.g. i7-6700K)
-  - Has a solid track record of uncovered security bugs: the only (to the date) vulnerability in OpenSSL with the critical score mark was discovered by honggfuzz. See the Trophies paragraph for the summary of findings to the date
-  - Uses low-level interfaces to monitor processes (e.g. ptrace under Linux and NetBSD). As opposed to other fuzzers, it will discover and report hijacked/ignored signals from crashes (intercepted and potentially hidden by a fuzzed program)
-  - Easy-to-use, feed it a simple corpus directory (can even be empty) and it will work its way up expanding it utilizing feedback-based coverage metrics
-  - Supports several (more than any other coverage-based feedback-driven fuzzer) hardware-based (CPU: branch/instruction counting, Intel BTS, Intel PT) and software-based feedback-driven fuzzing methods known from other fuzzers (libfuzzer, afl)
-  - Works (at least) under GNU/Linux, FreeBSD, NetBSD, Mac OS X, Windows/CygWin and Android
-  - Supports the persistent fuzzing mode (long-lived process calling a fuzzed API repeatedly) with libhfuzz/libhfuzz.a. More on that can be found here
-  - It comes with the examples directory, consisting of real world fuzz setups for widely-used software (e.g. Apache and OpenSSL)
+- [HonggFuzz](https://github.com/google/honggfuzz)
+HonggFuzz is another modern fuzzer. It has been reported to outperfr afl(++): it will be interesting to see if it will for the targets you are looking at.
 
 ## Instrumentation tools
 
