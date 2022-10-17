@@ -142,10 +142,10 @@ fuzzing campaigns.
 | Experiment 1 | afl with ASan  | 2.5 hrs |  2.5 million     | 2 crashes, 1 hang |
 | Experiment 2 | zzuf with ASan | 1.5 hrs |  134 k           | nothing           |
 
-You MUST clearly name or number your experiments, so it is easy to see
-the link with the text and the tables. This is useful to do in text
-anyway, as it allows clear cross-references in the discussion of your
-findings.
+You MUST clearly name or number your experiments, so it is easy for
+the reader to see the relation between the text and the tables. It is
+useful to number/name experiments in text anyway, as it allows clear
+cross-references in the discussion of your findings.
 
 For any flaws found, possible issues to discuss would be:
 
