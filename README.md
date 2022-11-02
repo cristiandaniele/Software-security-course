@@ -15,9 +15,9 @@ The goal is to keep this repo updated through the years, **also with the help of
 │   └── <a href="Project_guidelines/project_guidelines.md">project_guidelines.md</a>
 ├── <a href="Projects">Projects</a>
 ├── <a href="README.md">README.md</a>
-└── Tutorials
-    └── AFL++
-        └── macOS.md
+└── <a href="Tutorials">Tutorials</a>
+    └── <a href="Tutorials/AFL++">AFL++</a>
+        └── <a href="Tutorials/AFL++/macOS.md">macOS.md</a>
 </pre>
 
 # How to contribute (and please, do it!)
